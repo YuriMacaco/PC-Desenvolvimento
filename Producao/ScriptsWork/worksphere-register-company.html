@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Worksphere - Cadastro Empresa</title>
+  </head>
+  <body>
+  	<div class="container">
+    	<h1>Cadastrar Empresa</h1>
+    	<h2>Ambiente de Teste</h2>
+
+    	<form id="register-form" method="post">
+    		<fieldset class="form-group">
+    			<legend>Empresa</legend>
+				<div class="form-group">
+			    	<label for="name">Nome da Empresa</label>
+			    	<input type="text" required class="form-control" name="name" id="name" placeholder="Nome fantasia da empresa">
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label for="slug">Slug</label>
+			    	<input type="text" required class="form-control" name="slug" id="slug" placeholder="O slug será usado para o domínio: slug.worksphere.com.br">
+			  	</div>
+
+			  	<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="checkbox" name="events_enabled" id="events_enabled" value="1">
+				  <label class="form-check-label" for="events_enabled">Habilitar Eventos</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="checkbox" name="chat_enabled" id="chat_enabled" value="1">
+				  <label class="form-check-label" for="chat_enabled">Habilitar Chat</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="checkbox" name="contact_enabled" id="contact_enabled" value="1">
+				  <label class="form-check-label" for="contact_enabled">Habilitar Fale Conosco</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="checkbox" name="terms_enabled" id="terms_enabled" value="1">
+				  <label class="form-check-label" for="terms_enabled">Habilitar Termos de Uso</label>
+				</div>
+	  		</fieldset>
+
+			<fieldset class="form-group">
+    			<legend>Administrador</legend>
+			  	<div class="form-group">
+			    	<label for="admin_name">Nome Administrador</label>
+			    	<input type="text" required class="form-control" name="admin_name" id="admin_name" placeholder="Nome completo do administrador">
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label for="email">E-mail Administrador</label>
+			    	<input type="email" required class="form-control" name="email" id="email" placeholder="E-mail do administrador">
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label for="username">Username Administrador</label>
+			    	<input type="text" required class="form-control" name="username" id="username" placeholder="Username do administrador">
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label for="password">Senha Administrador</label>
+			    	<input type="password" required  class="form-control" name="password" id="password" placeholder="Senha do administrador">
+			  	</div>
+		  	</fieldset>
+		  	<input type="submit" name="enviar" value="Criar Empresa" class="btn btn-primary">
+		  	<div class="alert" id="result"></div>
+		</form>
+	</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script type="jquery.js"></script>
+
+    <script>
+    	$(document).ready(function() {
+    		$("#register-form").submit(function(e) {
+		    	var url = "https://api.a.worksphere.com.br/api/register-company"; // URL testes
+		    	// var url = "https://api.worksphere.com.br/api/register-company"; // URL PRODUÇÃO
+
+			    $.ajax({
+			           type: "POST",
+			           url: url,
+			           data: $("#register-form").serialize(),
+			           success: function(data) {
+			           		$('#result').removeClass('alert-error').addClass('alert-success').html('Empresa criada!');
+			           },
+			           error: function(data) {
+			           		var res = data.responseJSON;
+			           		var error;
+			           		if (data.status == 422) {
+			           			console.log(res);
+			           			error = 'Erro de validação: <br/><ul>';
+			           			$.each(res.validation_messages, function(index, value) {
+			           				error += '<li><b>' + index + '</b>: ';
+			           				$.each(value, function(err, msg) {
+			           					error += msg + ' ';
+			           				});
+			           				error += '</li>';
+			           			});
+			           			error += '</ul>';
+			           		} else {
+			           			error = 'Erro: ' + res.detail;
+			           		}
+
+			           		$('#result')
+			           			.addClass('alert-danger')
+			           			.html(error);
+			           }
+			         });
+
+		    	e.preventDefault();
+			});
+    	});
+	</script>
+  </body>
+</html>

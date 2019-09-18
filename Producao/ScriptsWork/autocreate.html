@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Página Auto Create
+    </title>
+
+    
+</head>
+<body>
+    <div class="alert" id="result">RESULTADO</div>
+    <script type="jquery.js"></script>
+    <script>
+        
+        var serviceUrl = "https://api.a.worksphere.com.br/oauth";
+
+        var jsonData = "[{'grant_type':'password'},{'username':'admin@b2midia.com.br'},{'password':'B2m1d1@01'},{'client_id':'b2news-web'}]";
+        
+       /* $.ajax({
+            url: serviceUrl,
+            type: "POST",
+            dataType: "json",
+            data: jsonData,
+            contentType: "application/json",
+            success: function (response) {
+                if (response) {
+                    var text = response;
+                    obj = JSON.parse(text);
+                    document.getElementById("descricao").innerHTML = "<span style='font-size: 70px;'>" + obj.access_token + "</span>";
+                }
+
+            }
+        }); */
+
+        /*$.ajax({
+                    type: "POST",
+                    url: serviceUrl,
+                    data: jsonData,
+                    body: JSON.stringify(jsonData),
+                    success: function(data) {
+                        $('#result').removeClass('alert-error').addClass('alert-success').html('Logado');
+                    },
+                    error: function(data) {
+                        $('#result').html('Logado');
+                    }
+                });*/
+
+
+        $.ajax({
+            url: 'https://api.a.worksphere.com.br/oauth',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify( { 'grant_type':'password', 'username':'admin@b2midia.com.br', 'password':'B2m1d1@01', 'client_id':'b2news-web'} ),
+            processData: false,
+            success: function( data, textStatus, jQxhr ){
+                $('#result').html( JSON.stringify( data ) );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+    </script>
+    
+</body>
+</html>

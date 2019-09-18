@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=devide-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Contato</title>
+
+	<style>
+		body{font-family: Arial, Helvetica, sans-serif}
+		.content{display:flex; justify-content: center}
+		.contato{width: 100%; max-width: 500px;}
+		.form{display: flex; flex-direction: column}
+		.field{padding: 10px; margin-bottom: 15px; border:1px solid #DDD; border-radius: 5px; font-family: Arial, Helvetica, sans-serif; font-size: 16px}
+		textarea{resize: vertical;}
+
+		h1, h2, h3, h5, h6 {
+            color:#000;
+            letter-spacing:-1px;
+            font-weight:400;
+            padding: 0;
+            margin: 0;
+            line-height: 30px;
+        }
+
+        h4{
+            color:#000;
+            letter-spacing:-1px;
+            font-weight:300;
+            padding: 10;
+            margin: 0;
+            line-height: 20px;
+        }
+
+	</style>
+
+	<script language="Javascript">
+		function validacaoEmail(field) {
+		usuario = field.value.substring(0, field.value.indexOf("@"));
+		dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+			if ((usuario.length >=1) &&
+			    (dominio.length >=3) && 
+			    (usuario.search("@")==-1) && 
+			    (dominio.search("@")==-1) &&
+			    (usuario.search(" ")==-1) &&
+			    (dominio.search(" ")==-1) &&
+			    (dominio.search(".")!=-1) &&      
+			    (dominio.indexOf(".") >=1)&& 
+			    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+
+			}
+			else{
+				document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido </font>";
+				alert("E-mail invalido");
+			}
+		}
+	</script>
+
+</head>
+<body>
+
+	<section class="content">
+		<div class="contato">
+			<h3><b>Formulário de contato</b></h3>
+			<form class="form" method="POST" action="email.php" name="f1">
+				<input class="field" name="name" placeholder="Nome" required>
+				<input 	class="field" name="email" placeholder="E-mail" onblur="validacaoEmail(f1.email)" required><div id="msgemail"></div>
+				<textarea class="field" name="mesage" placeholder="Digite sua mensagem aqui." rows="10" required></textarea>
+				<h4><b>Termos de Uso</b><br>
+					<p align="justify">Ao aceitar os termos de uso, você concorda em receber notificações e/ou contatos por e-mail, tais como retornos para credenciamento de usuário e/ou novidades sobre a aplicação, sinalização de novos conteúdos e etc.</p>
+
+					<p align="justify">Ao submeter seu email para ter acesso a uma credencial, voce terá acesso total aos conteúdos publicados, podendo participar comentando e curtindo as postagens mais relevantes e/ou de seu interesse.</p>
+
+					<p align="justify">O usuário aceita e declara compreender que, em razão do peculiar ambiente da Internet, a Worksphere não poderá garantir que o acesso ao conteúdo seja livre de erros ou problemas decorrentes de casos fortuitos, internos ou externos, casos de força maior ou ainda de outros casos não inteiramente sujeitos ao controle direto dos administradores da aplicação, e portanto, o usuário se obriga a isentar a nós de quaisquer reclamações referentes a descumprimento de prazo, interrupções, interceptações, invasões, disseminação de vírus ou outros atos ilícitos, típicos e atípicos do ambiente virtual, dos quais a Worksphere não tenha tido intenção deliberada de participar ou praticar.</p>
+
+					<p align="justify">O usuário aceita e declara compreender que qualquer texto, marca, áudio, imagem, ou “CONTEÚDO” veiculados a aplicação são protegidos por direitos de propriedade intelectual pertencentes a Worksphere  e/ou parceiros que autorizaram a divulgação, razão pela qual não podem ser copiados, reproduzidos ou simplesmente republicados em nenhuma hipótese, salvo se expressamente autorizado pelo respectivo detentor dos referidos direitos, sob pena de apuração das responsabilidades cabíveis, bem como cobrança por danos morais e materiais.</p></h4>
+				<div>
+					<input type="checkbox" class="field" name="aceite" required>
+					<label for="aceite"> Aceite Termos de Uso</label>
+				</div>
+				<input class="field" type="submit" name="Enviar">
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>

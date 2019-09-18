@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>Página Personalizada</title>
+	<style type="text/css">
+		@font-face {
+    		font-family: SourceSemiBold;
+    		src: url(SourceSansPro-SemiBold.ttf)
+		}
+		@font-face {
+    		font-family: SourceBold;
+    		src: url(SourceSansPro-Bold.ttf)
+		}
+		@font-face {
+    		font-family: SourceRegular;
+    		src: url(SourceSansPro-Regular.ttf)
+		}
+		body {
+			font-family: SourceBold;
+			width: 100px;
+			margin: auto;
+		}
+		header, article {
+			align-content: center;
+			position: relative;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		h1 {
+			color: #0078A1;
+			font-size: 22pt;
+			padding-top: 10px;
+			padding-bottom: 0px;
+			margin: 0px;
+			margin-bottom: -10px;
+		}
+		h1.principal {
+			color: #0078A1;
+			font-size: 22pt;
+		}
+		.data {
+			color: #000000;
+		}
+		.linha-01 {
+			border-top: 2px solid #0078A1;
+		}
+		.linhas {
+			border-top: 1px solid #C4C4C4;
+		}
+		br {
+			margin:5px 0px 5px 0px;			
+		}		
+		span.titulo {
+			font-size: 16pt;
+			color: #000000;
+			font-weight: bold;
+			padding-left: -10px;
+			margin-left: -10px;
+		}
+		span.subTitle {
+			font-size: 11pt;
+			color: #C4C4C4;
+			padding-left: -10px;
+			margin-left: -10px;
+		}
+		span.grau {
+			font-size: 18pt;
+			color: #000000;
+			font-weight: bold;
+		}
+		div.linha-vertical01 {
+  			height: 45px;
+  			border-left: 2.5px solid #0078A1;
+  			margin-left: 15px;
+  			margin-right: 5px;
+		}
+		span.maxMin {
+			font-family: SourceSemiBold;
+			font-size: 10pt;
+			color: #C4C4C4;
+		}
+		span.numero {
+			font-family: SourceRegular;
+			font-size: 15pt;
+		}
+		span.tituloAcao {
+			font-size: 16pt;
+			color: #0078A1;
+			font-weight: bold;
+			padding-left: -10px;
+			margin-left: -10px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1 class="principal">Segunda-feira, <span class="data">05 de agosto<span></h1>
+		<hr class="linha-01">
+	</header>
+	<article>
+		<h1>Clima</h1>
+		<table cellspacing="10">
+			<tr> 
+				<td>
+					<span class="titulo">AGORA<br/></span>
+					<span class="subTitle">São Paulo</span>
+				</td>
+				<td><div class="linha-vertical01"></div></td>
+				<td>FOTO <span class="grau">25ºC</span></td>
+			</tr>
+			<tr> 
+				<td>
+					<span class="titulo">HOJE<br/></span>
+					<span class="subTitle">São Paulo</span>
+				</td>
+				<td><div class="linha-vertical01"></div></td>
+				<td><img src="max.png"/><span class="maxMin"> Máx. </span><span class="grau">25ºC</span></td>
+				<td><img src="min.png"/><span class="maxMin"> Mín. </span><span class="grau">25ºC</span></td>
+			</tr>
+			<tr> 
+				<td>
+					<span class="titulo">AMANHÃ<br/></span>
+					<span class="subTitle">São Paulo</span>
+				</td>
+				<td><div class="linha-vertical01"></div></td>
+				<td><img src="max.png"/><span class="maxMin"> Máx. </span><span class="grau">25ºC</span></td>
+				<td><img src="min.png"/><span class="maxMin"> Mín. </span><span class="grau">25ºC</span></td>
+			</tr>
+		</table>
+		<hr class="linhas">
+	</article>
+
+	<article>
+		<h1>Cotações</h1>
+		<table cellspacing="10">
+			<tr>
+				<td>
+					<span class="titulo">DÓLAR<br/></span>
+					<span class="subTitle">compra</span>
+				</td>
+				<td></td>
+				<td>R$ <span class="numero">3,66</span></td>
+				<td></td>
+				<td>
+					<span class="titulo">DÓLAR<br/></span>
+					<span class="subTitle">venda</span>
+				</td>
+				<td></td>
+				<td>R$ <span class="numero">3,97</span></td>
+			</tr>
+			<tr>
+				<td>
+					<span class="titulo">EURO<br/></span>
+				</td>
+				<td></td>
+				<td>R$ <span class="numero">4,23</span></td>
+				<td></td>
+				<td>
+					<span class="titulo">COROA<br/></span>
+					<span class="subTitle">sueca</span>
+				</td>
+				<td></td>
+				<td>R$ <span class="numero">0,39</span></td>
+			</tr>
+		</table>
+		<hr class="linhas">
+	</article>
+
+	<article>
+		<h1>Ações</h1>
+		<table cellspacing="10">
+			<tr>
+				<td colspan="5">
+					<span class="titulo">Atlas Copco AB<br/></span>
+					<span class="subTitle">Moeda em SEK - Coroa Sueca</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="tituloAcao">ATCO-A<br/>&nbsp;</span>
+				</td>
+				<td>
+					<span class="numero">290,2<br/></span>
+					<span class="maxMin">+0,9(+0,31%)</span>
+				</td>
+				<td><div class="linha-vertical01" style="margin-right: 20px;"></div></td>
+				<td>
+					<span class="tituloAcao">ATCO-B<br/>&nbsp;</span>
+				</td>
+				<td>
+					<span class="numero">261,6<br/></span>
+					<span class="maxMin">-1,8(-0,69%)</span>
+				</td>
+			</tr>
+		</table>
+	</article>
+
+</body>
+</html>

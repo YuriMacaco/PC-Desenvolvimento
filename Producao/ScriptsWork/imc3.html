@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IMC</title>  
+    <script type="text/javascript">
+        calcularIMC = function (){
+            var formulario = document.getElementById("formulario");
+
+            var kilos = +formulario.quilos.value;    
+            var metros = +formulario.metros.value;  
+            var centimetros = +formulario.centimetros.value;
+
+            var altura = (metros*100 + centimetros)/100;    
+            var calculo = kilos / (altura * altura);    
+            formulario.imc.value = calculo.toFixed(2);
+
+                if(calculo<17){
+                    document.getElementById("msgemail").innerHTML= "Você está Muito abaixo do peso";
+                }else if(calculo>=17 && calculo<18.5){
+                    document.getElementById("msgemail").innerHTML= "Você está Abaixo do peso";
+                }
+                else if(calculo>=18.5 && calculo<24.9){
+                    document.getElementById("msgemail").innerHTML= "Você está com Peso normal";
+                }
+                else if(calculo>=25 && calculo<29.9) {
+                    document.getElementById("msgemail").innerHTML= "Você está Acima do peso";
+                }
+                else if(calculo>=30 && calculo<34.9) {
+                    document.getElementById("msgemail").innerHTML= "Você está com Obesidade I";
+                }
+                else if(calculo>=34.9 && calculo<39.9) {
+                    document.getElementById("msgemail").innerHTML= "Você está com Obesidade II";
+                }
+                else if (calculo>40){
+                    document.getElementById("msgemail").innerHTML= "Você está com Obesidade III (mórbida)";
+                }
+        }
+    </script>
+    <style type="text/css">
+        fieldset { width:300px; }
+        label { display:block; float:left;}
+        label, input {width:140px; margin:3px 0; }
+        th, td {border:1px solid #ccc; font-size:0.8em;}
+        a { color: inherit; }
+
+        .limpa {
+            font: bold 12px/24px arial, helvetica, sans-aerif;  
+            padding:0px;
+            text-decoration: none;
+            text-align:center;  
+            width:120px;  
+            height:24px;    
+            display:block;   
+        }
+    </style>
+</head>
+<body style="background-color:#EEEEEE;">
+   <center>
+        <form id="formulario">
+            <fieldset>
+                <b><p>Cálculo do IMC</p></b>
+
+                <label for="kilos">Quilos:</label>
+                <input type="text" name="quilos"/></br>        
+
+                <label for="metros">Metros:</label>
+                <input type="text" name="metros"/></br> 
+
+                <label for="centimetros">Cm:</label>
+                <input type="text" name="centimetros"/></br> 
+
+                <label for="imc">IMC:</label>
+                <input type="text" name="imc" disabled="disabled"/></br><br>
+
+                <div id="msgemail"></div></br>
+
+                <a href="#" onclick="calcularIMC()">CALCULAR</a></br></br>
+
+                <input type="reset" value="Limpar" class="limpa"></br>
+
+                <img src="tabela.png" width="100%">
+               
+            </fieldset>
+        </form>
+    </center>
+</body>
+</html>

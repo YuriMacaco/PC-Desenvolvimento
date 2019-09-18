@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=devide-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Contato</title>
+
+	<style>
+		body{font-family: Arial, Helvetica, sans-serif}
+		.content{display:flex; justify-content: center}
+		.contato{width: 100%; max-width: 500px;}
+		.form{display: flex; flex-direction: column}
+		.field{padding: 10px; margin-bottom: 15px; border:1px solid #DDD; border-radius: 5px; font-family: Arial, Helvetica, sans-serif; font-size: 16px}
+		textarea{resize: vertical;}
+
+		h1, h2, h3, h5, h6 {
+            color:#000;
+            letter-spacing:-1px;
+            font-weight:400;
+            padding: 0;
+            margin: 0;
+            line-height: 30px;
+        }
+
+        h4{
+            color:#000;
+            letter-spacing:-1px;
+            font-weight:300;
+            padding: 10;
+            margin: 0;
+            line-height: 20px;
+        }
+
+	</style>
+
+	<script language="Javascript">
+		function validacaoEmail(field) {
+		usuario = field.value.substring(0, field.value.indexOf("@"));
+		dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+			if ((usuario.length >=1) &&
+			    (dominio.length >=3) && 
+			    (usuario.search("@")==-1) && 
+			    (dominio.search("@")==-1) &&
+			    (usuario.search(" ")==-1) &&
+			    (dominio.search(" ")==-1) &&
+			    (dominio.search(".")!=-1) &&      
+			    (dominio.indexOf(".") >=1)&& 
+			    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+
+			}
+			else{
+				document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido </font>";
+				alert("E-mail invalido");
+			}
+		}
+	</script>
+
+</head>
+<body>
+
+	<section class="content">
+		<div class="contato">
+			<h3><b>Contact Form</b></h3>
+			<form class="form" method="POST" action="email.php" name="f1">
+				<input class="field" name="name" placeholder="Name" required>
+				<input 	class="field" name="email" placeholder="E-mail" onblur="validacaoEmail(f1.email)" required><div id="msgemail"></div>
+				<textarea class="field" name="mesage" placeholder="Enter your message here." rows="10" required></textarea>
+				<h4><b>Terms of use</b><br>
+					<p align="justify">By accepting the terms of use, you agree to receive email notifications and / or contacts, such as returns for user accreditation and / or news about the application, signage of new content and so on.</p>
+
+					<p align="justify">By submitting your email to access a credential, you will have full access to the published content, being able to participate commenting and enjoying the most relevant posts and / or your interest.</p>
+
+					<p align="justify">You acknowledge and agree that due to the particular environment of the Internet, Worksphere can not guarantee that access to the content is free from errors or problems arising from unforeseeable events, internal or external, force majeure or other cases not entirely subject to the direct control of the administrators of the application, and therefore, the user undertakes to exempt us from any claims related to noncompliance with deadlines, interruptions, interceptions, invasions, dissemination of viruses or other illicit, typical and atypical acts of the environment of which Worksphere has not deliberately intended to participate or practice.</p>
+
+					<p align="justify">The user accepts and declares to understand that any text, mark, audio, image, or "CONTENT" conveyed by the application are protected by intellectual property rights belonging to Worksphere and / or partners that authorized the disclosure, reason why they can not be copied, reproduced or simply republished under any circumstances, unless expressly authorized by the respective holder of said rights, under penalty of investigation of the appropriate responsibilities, as well as collection for moral and material damages.</p></h4>
+				<div>
+					<input type="checkbox" class="field" name="aceite" required>
+					<label for="aceite"> Accept Terms of Use</label>
+				</div>
+				<input class="field" type="submit" name="Submit">
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>

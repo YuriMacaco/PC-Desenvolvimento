@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Página de Teste</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#form").submit(function(){
+				var idade = $("#idade").val();
+
+				if(idade == ""){
+
+				}else{
+					$.ajax({
+						url: 'processo.php',
+						data: {idade : idade},
+						type: 'POST',
+						dataType: 'json',
+						success: function(retorno){
+							if(retorno.erro == 1){
+								alert(retorno.msg);
+							}else{
+								$(".resultado").html('');
+								$(".resultado").html(retorno.ano);
+							}
+						},
+						error: function(){
+							alert("Houve algum erro");
+						}
+						});
+					}
+						return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<form action="" id="form">
+		<input type="text" id="idade" name="">
+		<input type="submit" value="Enviar" name="">
+	</form>
+	<span class="resultado"></span>
+
+</body>
+</html>
