@@ -1,0 +1,23 @@
+.conteudo {
+	border: 1px solid red;
+	padding: 20px;
+	margin: 10px;
+	width: 150px; 
+}
+
+.conteudo2 {
+	border: 1px solid red;
+	padding: 20px;
+	margin: 50px;
+	width: 150px; 
+}
+
+#noticia {
+	background: #f9f9f9;
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+h2 {
+	margin: 0px;
+}

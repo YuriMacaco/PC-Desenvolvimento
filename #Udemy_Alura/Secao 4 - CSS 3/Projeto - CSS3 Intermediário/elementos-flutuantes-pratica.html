@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Elementos Flutuantes</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+
+		body {
+			background: #f4f4f4;
+		}
+
+		#principal {
+			width: 920px;
+		}
+
+		.noticia {
+			background: #e5e5e5;
+			padding: 5px;
+			margin: 7px;
+			width: 280px;
+			float: left;
+		}
+
+		.imagem-galeria {
+			background: white;
+			width: 265px;
+			padding: 5px;
+			margin: 15px;
+			float: left;
+		}
+
+		.clear {
+			clear: both;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="principal"> <!-- Inicio Principal -->
+		<div> <!-- Inicio Noticia -->
+
+			<div class="noticia">
+				<h2>Conteudo 1</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi faucibus placerat mi. Donec hendrerit leo magna, eget molestie augue sollicitudin eget.</p>
+				<a href="">Veja mais</a>
+			</div>
+
+			<div class="noticia">
+				<h2>Conteudo 2</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi faucibus placerat mi. Donec hendrerit leo magna, eget molestie augue sollicitudin eget.</p>
+				<a href="">Veja mais</a>
+			</div>
+
+			<div class="noticia">
+				<h2>Conteudo 3</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi faucibus placerat mi. Donec hendrerit leo magna, eget molestie augue sollicitudin eget.</p>
+				<a href="">Veja mais</a>
+			</div>
+
+		</div> <!-- Fim Noticia -->
+
+		<div class="clear"></div>
+
+		<div> <!-- Inicio Galeria de Imagem -->
+			
+			<div class="imagem-galeria">
+				<img src="imagens/imagem1.png">
+				<p>Resumo</p>
+			</div>
+
+			<div class="imagem-galeria">
+				<img src="imagens/imagem2.png">
+				<p>Resumo</p>
+			</div>
+
+			<div class="imagem-galeria">
+				<img src="imagens/imagem3.png">
+				<p>Resumo</p>
+			</div>
+
+			<div class="imagem-galeria">
+				<img src="imagens/imagem4.png">
+				<p>Resumo</p>
+			</div>
+
+			<div class="imagem-galeria">
+				<img src="imagens/imagem5.png">
+				<p>Resumo</p>
+			</div>
+
+		</div> <!-- Fim Galeria de Imagem -->
+
+	</div><!-- Fim Principal -->
+</body>
+</html>
